@@ -1,4 +1,8 @@
 img {
-    width: 50%;  /* Adjust this percentage to make the image smaller */
+    width: 20rem;  /* Adjust this percentage to make the image smaller */
     height: auto; /* Keeps the aspect ratio */
   }
+
+header {
+  text-align: center;
+}
