@@ -11,6 +11,32 @@ footer {
   text-align: center;
 }
 
+body {
+  background-color: #fefbea; /* soft cream color */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Azeret Mono", monospace;
+}
+
+.section-container1 {
+  width: 100vw; 
+  padding: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #ffe6f0;
+  box-sizing: border-box;
+}
+
+.section-container2 {
+  width: 100vw; 
+  padding: 10px;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #ecefff;
+  box-sizing: border-box;
+}
+
 /*project card style*/
 .project {
   background: #f9f9f9;
@@ -26,7 +52,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /*3 columns repeating*/
   gap: 20px;
-  padding: 40px; 
+  padding: 10px; 
 }
 
 /*image inside project card*/
