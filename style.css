@@ -1,15 +1,46 @@
 img {
-    width: 20rem;  /* Adjust this percentage to make the image smaller */
-    height: auto; /* Keeps the aspect ratio */
-  }
+  height: auto; /* Keeps the aspect ratio */
+}
 
 header {
   text-align: center;
+  font-family: "Barrio", cursive;
 }
 
-.projects {
+footer {
+  text-align: center;
+}
+
+/*project card style*/
+.project {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 12px; /*rounded corners*/
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/*grid container style*/
+.grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 20px; 
-  padding: 20px;
+  grid-template-columns: repeat(3, 1fr); /*3 columns repeating*/
+  gap: 20px;
+  padding: 40px; 
+}
+
+/*image inside project card*/
+.project img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /*rounds corner of img*/
+  object-fit: contain; /*cover = zooms in, cotain = smaller*/
+  max-height: 250px;
+}
+
+/*paragraph inside project*/
+.project p {
+  margin-top: 10px;
+  font-size: 1rem; /*1 times the root element (16px?)*/
+  font-family: "Gabarito", sans-serif;
 }
