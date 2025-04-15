@@ -10,6 +10,8 @@
 </head>
 
 <body>
+  <script src="modal.js"></script>
+
   <!-- First stuff you see on the very top of the page -->
   <header>
     <h1>Yuko's Graphic Design and Art and Stuff</h1>
@@ -22,32 +24,44 @@
 
       <div class="grid-container">
         <div class="project">
-          <img src="assets/images/AGMPOST.png" alt="AGM">
+          <a href="#project1" class="thumb">
+          <img src="assets/images/AGMPOST.png" alt="AGM" onclick="openModal('modal1')">
+          </a>
           <p>Post, banner, and story graphic announcing CiTR/Discorder AGM (Click for more)</p>
         </div>
 
         <div class="project">
-          <img src="assets/images/keepingupwiththeindies.png" alt="Listen!">
+          <a href="#project2" class="thumb">
+          <img src="assets/images/keepingupwiththeindies.png" alt="Listen!" onclick="openModal('modal2')">
+          </a>
           <p>4 posters to be put up around UBC campus encouraging viewers to listen to CiTR radio (Click for more)</p>
         </div>
 
         <div class="project">
+          <a href="#project3" class="thumb">
           <img src="assets/images/emmagman3_yukoy_disc_apr2025.png" alt="Emma Goldman">
+          </a>
           <p>Illustrations for Vancouver-based punk/screamo band Emma Goldman (Click for more)</p>
         </div>
 
         <div class="project">
+          <a href="#project4" class="thumb">
           <img src="assets/images/shindigdance.png" alt="Shindig">
+          </a>
           <p>Illustrations for Discorder Magazine accompanying feature about Shindig Music Festival (Click for more)</p>
         </div>
 
         <div class="project">
+          <a href="#project5" class="thumb">
           <img src="assets/images/Calendar_YukoYajima_forDiscorder_FebMar2024.jpg" alt="Calendar">
+          </a>
           <p>Mixed media collage for Discorder Magazine calendar (Click for more)</p>
         </div>
 
         <div class="project">
+          <a href="#project6" class="thumb">
           <img src="assets/images/hat.png" alt="Whatshat?">
+          </a>
           <p>Logo Design for podcast "What's in the Hat?" (Click for more)</p>
         </div>
       </div>
@@ -90,6 +104,25 @@
 
     </div>
   </section>
+
+  <!--modal/process!-->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h2>AGM</h2>
+      <img src="assets/images/AGMprocess.png" alt="agm">
+      <p>This assignment included an Instagram story, post, and Facebook banner to promote the AGM. The only guidance I got was "egg!" (because it was held in the nest) so I initially took that in a more general sense and wanted to create 3 completely different pieces showcasing different kinds of eggs. The idea of an egg in itself is about the start of something new, in this case a fresh beginning for this organization.</p>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h2>Listen to CiTR!</h2>
+      <img src="assets/images/listen!process.png" alt="listen!">
+      <p>Finals for all 4 posters. I tried to match the aesthetics of each poster to the genre it promotes. Until this assignment all of the media I created was more illustrative so this project challenged me. To create readable, text-forward grahpics while keeping everything engaging was initially difficult to grasp, especially considering the differing lengths of the band names and figuring out which types to use (I usually like creating my own but that would have been unreasonable for this project.) Sometimes simple is better.</p>
+    </div>
+  </div>
 
   <!-- bottom contact stuff -->
   <footer>
