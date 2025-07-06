@@ -7,8 +7,13 @@ img {
 }
 
 header {
+  position: sticky; /*change the header to be constant*/
+  z-index: 1; /*layers, makes on top of everything (z axis)*/
+  top: 0;
   text-align: center;
   font-family: "Barrio", cursive;
+  background-color: var(--background);
+  padding: 0px; /*top/bottom left/right spacing of header (top right bottom left??? u can do 4)*/
 }
 
 footer {
@@ -16,37 +21,21 @@ footer {
 }
 
 body {
-  background-color: #fefbea; /* soft cream color */
   margin: 0;
   padding: 0;
   text-align: center;
+  color: #FFFFFF;
   font-family: "Azeret Mono", monospace;
+  --background: #0c0c67;
+  background-color: var(--background); /* soft cream color */
 }
 
-.section-container1 {
+.section-container1, .section-container2, .section-container3 {
   width: 100vw; 
   padding: 10px;
   margin-left: 0;
   margin-right: 0;
-  background-color: #ffe6f0;
-  box-sizing: border-box;
-}
-
-.section-container2 {
-  width: 100vw; 
-  padding: 10px;
-  margin-left: 0;
-  margin-right: 0;
-  background-color: #ecefff;
-  box-sizing: border-box;
-}
-
-.section-container3 {
-  width: 100vw; 
-  padding: 10px;
-  margin-left: 0;
-  margin-right: 0;
-  background-color: #e6ffea;
+  background-color: var(--background);
   box-sizing: border-box;
 }
 
@@ -56,6 +45,7 @@ body {
   padding: 15px;
   border-radius: 12px; /*rounded corners*/
   text-align: center;
+  color: black;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
