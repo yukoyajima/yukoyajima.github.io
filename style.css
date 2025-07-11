@@ -11,7 +11,7 @@ header {
   z-index: 1; /*layers, makes on top of everything (z axis)*/
   top: 0;
   text-align: center;
-  font-family: "Barrio", cursive;
+  font-family: "Bowlby One", sans-serif;
   background-color: var(--background);
   padding: 0px; /*top/bottom left/right spacing of header (top right bottom left??? u can do 4)*/
 }
@@ -24,9 +24,9 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #FFFFFF;
+  color: #000000;
   font-family: "Azeret Mono", monospace;
-  --background: #0c0c67;
+  --background: #ffffff;
   background-color: var(--background); /* soft cream color */
 }
 
@@ -41,12 +41,12 @@ body {
 
 /*project card style*/
 .project {
-  background: #f9f9f9;
+  /*background: #ffffff;*/
   padding: 15px;
-  border-radius: 12px; /*rounded corners*/
+  /*border-radius: 12px; /*rounded corners*/
   text-align: center;
   color: black;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0;
   overflow: hidden;
 }
 
@@ -62,7 +62,7 @@ body {
 .project img {
   width: 100%;
   height: auto;
-  border-radius: 12px; /*rounds corner of img*/
+  /*border-radius: 12px; /*rounds corner of img*/
   object-fit: contain; /*cover = zooms in, cotain = smaller*/
   max-height: 250px;
 }
