@@ -11,10 +11,16 @@ header {
   z-index: 1; /*layers, makes on top of everything (z axis)*/
   top: 0;
   text-align: center;
+  color: rgb(4, 8, 59); /*text color navy*/
   font-family: "Bowlby One", sans-serif;
-  background-color: var(--background);
+  background-color: transparent;
+  background-image: url(/Users/yukolaurayajima/Documents/git_repo/yukoyajima.github.io/assets/images/bright3.png), url(/Users/yukolaurayajima/Documents/git_repo/yukoyajima.github.io/assets/images/bleft3.png);
+  background-position: right, left;
+  background-repeat: no-repeat;
+  background-size: contain;
   padding: 0px; /*top/bottom left/right spacing of header (top right bottom left??? u can do 4)*/
 }
+
 
 footer {
   text-align: center;
@@ -27,7 +33,7 @@ body {
   color: #000000;
   font-family: "Azeret Mono", monospace;
   --background: #ffffff;
-  background-color: var(--background); /* soft cream color */
+  background-color: var(--background); /* white */
 }
 
 .section-container1, .section-container2, .section-container3 {
