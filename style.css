@@ -103,16 +103,19 @@ body {
   padding: 30px;
   width: 100%;
   max-width: 800px;
-  position: absolute;
-  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: relative;
+  max-height: 80vh;  /* 80% of viewport height */
+  overflow-y: auto;  /* adds scroll if content too tall */
 }
 
 .modal-content img {
   width: 100%;
   height: auto;
+  display: block;
+  margin: 0 auto 15px;
 }
 
 .close {
@@ -123,6 +126,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
+  z-index: 10;
 }
 
 .close:hover {
