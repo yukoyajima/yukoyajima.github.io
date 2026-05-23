@@ -1,0 +1,46 @@
+---
+import openHandCursor from '../assets/open_hand_cursor.png';
+import pointHandCursor from '../assets/point_hand_cursor.png';
+
+const openHandUrl = `url(${openHandCursor.src})`;
+const pointHandUrl = `url(${pointHandCursor.src})`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+		<title>yukossite</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style define:vars={{ openHandUrl, pointHandUrl }} is:global>
+	html {
+		scroll-behavior: smooth;
+		background: #DE2AC6;
+	}
+
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		min-height: 100%;
+		cursor: var(--openHandUrl) 18 18, auto;
+		color: #111;
+		font-family: 'Inter', system-ui, sans-serif;
+	}
+
+	a {
+		cursor: var(--pointHandUrl) 18 18, pointer;
+	}
+</style>

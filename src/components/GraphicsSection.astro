@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+
+import graphicsFriendsofcitr1 from '../assets/graphics-friendsofcitr-1.png';
+import graphicsFriendsofcitr2 from '../assets/graphics-friendsofcitr-2.png';
+import graphicsSaddlensound3 from '../assets/graphics-saddlensound-3.png';
+import graphicsWantotrockout4 from '../assets/graphics-wantotrockout-4.png';
+import graphicsGotjazz5 from '../assets/graphics-gotjazz-5.png';
+import graphicsIndiemusic6 from '../assets/graphics-indiemusic-6.png';
+import graphicsCanadia7 from '../assets/graphics-canadia-7.png';
+import graphicsCitragm8 from '../assets/graphics-citragm-8.png';
+import graphicsPlantsale9 from '../assets/graphics-plantsale-9.png';
+import graphicsCitragmsquare10 from '../assets/graphics-citragmsquare-10.png';
+import graphicsCitragmlong11 from '../assets/graphics-citragmlong-11.png';
+---
+
+<section id="graphics" class="page-section section-graphics">
+	<h2>GRAPHICS</h2>
+	<div class="section-gallery">
+		<div class="gallery-row">
+			<Image src={graphicsFriendsofcitr1} alt="" />
+			<Image src={graphicsFriendsofcitr2} alt="" />
+			<Image src={graphicsSaddlensound3} alt="" />
+		</div>
+		<div class="gallery-row">
+			<Image src={graphicsWantotrockout4} alt="" />
+			<Image src={graphicsGotjazz5} alt="" />
+			<Image src={graphicsIndiemusic6} alt="" />
+		</div>
+		<div class="gallery-row">
+			<Image src={graphicsCanadia7} alt="" />
+			<Image src={graphicsCitragm8} alt="" />
+			<Image src={graphicsPlantsale9} alt="" />
+		</div>
+		<div class="gallery-row">
+			<Image src={graphicsCitragmsquare10} alt="" />
+			<Image src={graphicsCitragmlong11} alt="" />
+		</div>
+	</div>
+</section>
+
+<style>
+	.section-graphics {
+		background: #DFFFE1;
+		padding-left: clamp(1rem, 5vw, 80px);
+		padding-right: clamp(1rem, 5vw, 80px);
+	}
+
+	.section-graphics h2 {
+		left: auto;
+		right: 0;
+	}
+
+</style>

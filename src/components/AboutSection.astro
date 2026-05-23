@@ -1,0 +1,91 @@
+---
+import { Image } from 'astro:assets';
+
+import aboutmePng from '../assets/aboutme.png';
+---
+
+<section id="about" class="page-section section-about">
+	<p class="about-greeting">hi i am yuko!</p>
+	<p class="about-passionate">i am passionate about the intersection between art</p>
+	<div class="about-photo-row">
+		<Image class="about-photo" src={aboutmePng} alt="Photo of Yuko" />
+		<p class="about-passionate-line2">and science</p>
+	</div>
+	<div class="about-bottom">
+		<p class="about-hobbies">in my free time i enjoy knitting,<br /> listening to rock music,<br /> and learning new tools (currently blender)</p>
+		<p class="about-enjoy">please enjoy my work :3</p>
+	</div>
+</section>
+
+<style>
+	.section-about {
+		background: #FFADF4;
+		display: flex;
+		flex-direction: column;
+		padding: 0;
+	}
+
+	.section-about .about-greeting,
+	.section-about .about-hobbies,
+	.section-about .about-enjoy,
+	.section-about .about-passionate,
+	.section-about .about-passionate-line2 {
+		font-size: clamp(25px, 5vw, 45px);
+		font-weight: 400;
+		margin: 0;
+		line-height: 1.2;
+		color: #fff;
+	}
+
+	.about-greeting {
+		align-self: flex-start;
+		padding-left: 0;
+	}
+
+	.about-passionate {
+		align-self: flex-end;
+		text-align: right;
+	}
+
+	.about-photo-row {
+		position: relative;
+		display: flex;
+		justify-content: center;
+	}
+
+	.about-passionate-line2 {
+		position: absolute;
+		right: 0;
+		top: 0;
+		text-align: right;
+	}
+
+	.about-photo {
+		width: min(480px, 85%);
+		height: auto;
+		margin-top: 20px;
+		margin-bottom: 30px;
+	}
+
+	.about-bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-top: auto;
+	}
+
+	@media (max-width: 1000px) {
+		.about-photo {
+			margin-top: 50px;
+		}
+	}
+
+	.about-hobbies {
+		text-align: left;
+	}
+
+	.about-enjoy {
+		align-self: flex-end;
+		margin-top: 20px !important;
+	}
+</style>

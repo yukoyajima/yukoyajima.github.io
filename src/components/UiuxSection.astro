@@ -1,0 +1,35 @@
+---
+import { Image } from 'astro:assets';
+
+import uxWids1 from '../assets/ux-wids-1.png';
+---
+
+<section id="uiux" class="page-section section-uiux">
+	<h2>UI/UX</h2>
+	<div class="section-gallery gallery-single">
+		<Image src={uxWids1} alt="" />
+	</div>
+</section>
+
+<style>
+	.section-uiux {
+		background: #FCFFD7;
+		padding-left: clamp(1rem, 5vw, 80px);
+		padding-right: clamp(1rem, 5vw, 80px);
+		min-height: unset;
+		padding-bottom: clamp(40px, 8vw, 80px);
+	}
+
+	.gallery-single {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.gallery-single img {
+		width: min(80%, 500px);
+		max-width: 100%;
+		height: auto;
+	}
+</style>
