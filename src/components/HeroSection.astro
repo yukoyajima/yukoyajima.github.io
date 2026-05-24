@@ -118,7 +118,6 @@ const eyeMaskUrl = eyeMaskSvg.src;
 		font-size: clamp(40px, 8vw, 70px);
 		font-weight: 400;
 		line-height: 0.9;
-		z-index: 10;
 		color: #111;
 	}
 
@@ -131,7 +130,6 @@ const eyeMaskUrl = eyeMaskSvg.src;
 		font-size: clamp(54px, 10vw, 100px);
 		font-weight: 400;
 		line-height: 0.85;
-		z-index: 10;
 		color: #111;
 	}
 
@@ -193,10 +191,11 @@ const eyeMaskUrl = eyeMaskSvg.src;
 	}
 
 	.eye {
-		--mask-x: 17px;
-		--mask-y: 2.5px;
+		--eye-width: min(72vw, 596px);
+		--mask-x: calc(var(--eye-width) * 17 / 596);
+		--mask-y: calc(var(--eye-width) * 2.5 / 596);
 		position: relative;
-		width: min(72vw, 596px);
+		width: var(--eye-width);
 		aspect-ratio: 699 / 451;
 		overflow: hidden;
 	}
@@ -246,13 +245,11 @@ const eyeMaskUrl = eyeMaskSvg.src;
 		transform: translate(calc(-50% + var(--pupil-x)), calc(-50% + var(--pupil-y)));
 	}
 
-	@media (max-width: 760px) {
-		.eye-stage {
-			overflow-x: clip;
-		}
+	.eye-stage {
+		overflow-x: clip;
+	}
 
-		.eye-wrapper {
-			transform: translateX(-12vw);
-		}
+	.eye-wrapper {
+		transform: translateX(clamp(-12vw, calc((100vw - 1200px) * 0.2), 0px));
 	}
 </style>
