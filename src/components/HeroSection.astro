@@ -10,7 +10,6 @@ const eyeMaskUrl = eyeMaskSvg.src;
 
 <main class="eye-stage" aria-label="An illustrated eye whose pupil follows the cursor">
 	<p class="corner-welcome">WELCOME2</p>
-	<p class="corner-site">YUKOSSITE</p>
 	<div class="eye-wrapper">
 		<nav class="eye-nav" aria-label="Page sections">
 			<a href="#about" class="lash lash-1">ABOUT</a>
@@ -26,6 +25,7 @@ const eyeMaskUrl = eyeMaskSvg.src;
 			<div class="movement-bounds" aria-hidden="true"></div>
 		</div>
 	</div>
+	<p class="corner-site">YUKOSSITE</p>
 </main>
 
 <script>
@@ -110,34 +110,31 @@ const eyeMaskUrl = eyeMaskSvg.src;
 
 <style>
 	.corner-welcome {
-		position: absolute;
-		top: 0;
-		left: 0;
+		align-self: flex-start;
 		margin: 0;
+		margin-bottom: clamp(48px, 17vh, 160px);
 		padding: 0;
-		font-size: clamp(40px, 8vw, 70px);
+		font-size: clamp(65px, 8vw, 70px);
 		font-weight: 400;
 		line-height: 0.9;
 		color: #111;
 	}
 
 	.corner-site {
-		position: absolute;
-		bottom: 0;
-		right: 0;
+		align-self: flex-end;
 		margin: 0;
+		margin-top: clamp(28px, 20vh, 96px);
 		padding: 0;
-		font-size: clamp(54px, 10vw, 100px);
+		font-size: clamp(65px, 10vw, 100px);
 		font-weight: 400;
 		line-height: 0.85;
 		color: #111;
 	}
 
 	.eye-stage {
-		position: relative;
-		min-height: 100svh;
-		display: grid;
-		place-items: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		background: #38FFFB;
 	}
 
@@ -156,8 +153,8 @@ const eyeMaskUrl = eyeMaskSvg.src;
 		position: absolute;
 		transform-origin: bottom left;
 		text-decoration: underline;
-		text-decoration-thickness: 2px;
-		text-underline-offset: 5px;
+		text-decoration-thickness: clamp(1px, 0.25vw, 2px);
+		text-underline-offset: clamp(2px, 0.55vw, 5px);
 		color: #111;
 		white-space: nowrap;
 		pointer-events: auto;
