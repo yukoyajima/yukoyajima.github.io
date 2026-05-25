@@ -33,51 +33,20 @@ const eyeMaskUrl = eyeMaskSvg.src;
 	const pupil = document.querySelector('[data-pupil]');
 
 	if (eye instanceof HTMLElement && pupil instanceof HTMLElement) {
-		let lastPointerX = window.innerWidth / 2;
-		let lastPointerY = window.innerHeight / 2;
-		let updateFrame = 0;
 		const visiblePupilInset = 0.48;
 		const boundsScaleX = 0.75;
 		const boundsScaleY = 0.6;
 		const boundsOffsetX = 23;
-		const boundsOffsetY = -13;
+		const boundsOffsetY = 0;
 
-		const pointPupilAt = (clientX, clientY) => {
+		const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+		const getEllipseBounds = () => {
 			const rect = eye.getBoundingClientRect();
-			const centerX = rect.left + window.scrollX + rect.width / 2 + boundsOffsetX;
-			const centerY = rect.top + window.scrollY + rect.height / 2 + boundsOffsetY;
-			const pageX = clientX + window.scrollX;
-			const pageY = clientY + window.scrollY;
 			const pupilRect = pupil.getBoundingClientRect();
 			const radiusX = Math.max(((rect.width - pupilRect.width * visiblePupilInset) / 2) * boundsScaleX, 0);
 			const radiusY = Math.max(((rect.height - pupilRect.height * visiblePupilInset) / 2) * boundsScaleY, 0);
-			eye.style.setProperty('--bounds-width', `${radiusX * 2}px`);
-			eye.style.setProperty('--bounds-height', `${radiusY * 2}px`);
-			eye.style.setProperty('--bounds-center-x', `${boundsOffsetX}px`);
-			eye.style.setProperty('--bounds-center-y', `${boundsOffsetY}px`);
-			const deltaX = pageX - centerX;
-			const deltaY = pageY - centerY;
-			const cursorDistance = Math.hypot(deltaX, deltaY);
-
-			if (cursorDistance === 0 || radiusX === 0 || radiusY === 0) {
-				centerPupil();
-				return;
-			}
-
-			const directionX = deltaX / cursorDistance;
-			const directionY = deltaY / cursorDistance;
-			const trackingRadiusX = window.innerWidth / 2;
-			const trackingRadiusY = window.innerHeight / 2;
-			const distanceToEyeEdge = 1 / Math.hypot(directionX / radiusX, directionY / radiusY);
-			const progress = Math.min(
-				Math.hypot(deltaX / trackingRadiusX, deltaY / trackingRadiusY),
-				1,
-			);
-			const pupilX = boundsOffsetX + directionX * distanceToEyeEdge * progress;
-			const pupilY = boundsOffsetY + directionY * distanceToEyeEdge * progress;
-
-			pupil.style.setProperty('--pupil-x', `${pupilX}px`);
-			pupil.style.setProperty('--pupil-y', `${pupilY}px`);
+			return { radiusX, radiusY };
 		};
 
 		const centerPupil = () => {
@@ -85,25 +54,86 @@ const eyeMaskUrl = eyeMaskSvg.src;
 			pupil.style.setProperty('--pupil-y', `${boundsOffsetY}px`);
 		};
 
-		const schedulePupilUpdate = () => {
-			if (updateFrame) return;
+		if (isMobile) {
+			pupil.setAttribute('data-mobile-eye', '');
 
-			updateFrame = window.requestAnimationFrame(() => {
-				updateFrame = 0;
+			const moveToRandom = () => {
+				const { radiusX, radiusY } = getEllipseBounds();
+				// Uniform random point within the ellipse
+				const angle = Math.random() * 2 * Math.PI;
+				const r = Math.sqrt(Math.random());
+				const pupilX = boundsOffsetX + r * radiusX * Math.cos(angle);
+				const pupilY = boundsOffsetY + r * radiusY * Math.sin(angle);
+				pupil.style.setProperty('--pupil-x', `${pupilX}px`);
+				pupil.style.setProperty('--pupil-y', `${pupilY}px`);
+
+				const nextDelay = (5 + Math.random() * 5) * 1000;
+				setTimeout(moveToRandom, nextDelay);
+			};
+
+			centerPupil();
+			const initialDelay = (5 + Math.random() * 5) * 1000;
+			setTimeout(moveToRandom, initialDelay);
+		} else {
+			let lastPointerX = window.innerWidth / 2;
+			let lastPointerY = window.innerHeight / 2;
+			let updateFrame = 0;
+
+			const pointPupilAt = (clientX, clientY) => {
+				const rect = eye.getBoundingClientRect();
+				const centerX = rect.left + window.scrollX + rect.width / 2 + boundsOffsetX;
+				const centerY = rect.top + window.scrollY + rect.height / 2 + boundsOffsetY;
+				const pageX = clientX + window.scrollX;
+				const pageY = clientY + window.scrollY;
+				const { radiusX, radiusY } = getEllipseBounds();
+				eye.style.setProperty('--bounds-width', `${radiusX * 2}px`);
+				eye.style.setProperty('--bounds-height', `${radiusY * 2}px`);
+				eye.style.setProperty('--bounds-center-x', `${boundsOffsetX}px`);
+				eye.style.setProperty('--bounds-center-y', `${boundsOffsetY}px`);
+				const deltaX = pageX - centerX;
+				const deltaY = pageY - centerY;
+				const cursorDistance = Math.hypot(deltaX, deltaY);
+
+				if (cursorDistance === 0 || radiusX === 0 || radiusY === 0) {
+					centerPupil();
+					return;
+				}
+
+				const directionX = deltaX / cursorDistance;
+				const directionY = deltaY / cursorDistance;
+				const trackingRadiusX = window.innerWidth / 2;
+				const trackingRadiusY = window.innerHeight / 2;
+				const distanceToEyeEdge = 1 / Math.hypot(directionX / radiusX, directionY / radiusY);
+				const progress = Math.min(
+					Math.hypot(deltaX / trackingRadiusX, deltaY / trackingRadiusY),
+					1,
+				);
+				const pupilX = boundsOffsetX + directionX * distanceToEyeEdge * progress;
+				const pupilY = boundsOffsetY + directionY * distanceToEyeEdge * progress;
+
+				pupil.style.setProperty('--pupil-x', `${pupilX}px`);
+				pupil.style.setProperty('--pupil-y', `${pupilY}px`);
+			};
+
+			const schedulePupilUpdate = () => {
+				if (updateFrame) return;
+				updateFrame = window.requestAnimationFrame(() => {
+					updateFrame = 0;
+					pointPupilAt(lastPointerX, lastPointerY);
+				});
+			};
+
+			window.addEventListener('pointermove', (event) => {
+				lastPointerX = event.clientX;
+				lastPointerY = event.clientY;
 				pointPupilAt(lastPointerX, lastPointerY);
 			});
-		};
-
-		window.addEventListener('pointermove', (event) => {
-			lastPointerX = event.clientX;
-			lastPointerY = event.clientY;
-			pointPupilAt(lastPointerX, lastPointerY);
-		});
-		window.addEventListener('scroll', schedulePupilUpdate, { passive: true });
-		window.addEventListener('resize', schedulePupilUpdate);
-		window.addEventListener('pointerleave', centerPupil);
-		window.addEventListener('blur', centerPupil);
-		schedulePupilUpdate();
+			window.addEventListener('scroll', schedulePupilUpdate, { passive: true });
+			window.addEventListener('resize', schedulePupilUpdate);
+			window.addEventListener('pointerleave', centerPupil);
+			window.addEventListener('blur', centerPupil);
+			schedulePupilUpdate();
+		}
 	}
 
 </script>
@@ -240,6 +270,10 @@ const eyeMaskUrl = eyeMaskSvg.src;
 		width: 70%;
 		height: auto;
 		transform: translate(calc(-50% + var(--pupil-x)), calc(-50% + var(--pupil-y)));
+	}
+
+	.pupil[data-mobile-eye] {
+		transition: transform 0.3s linear;
 	}
 
 	.eye-stage {
